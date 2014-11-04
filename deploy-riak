@@ -1,0 +1,5 @@
+#!/bin/bash
+TOP="$(dirname "$(readlink -e $0)")"
+cd "$TOP"
+
+ansible-playbook --sudo --inventory-file inventory.txt site.yml --verbose --diff

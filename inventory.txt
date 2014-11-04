@@ -1,0 +1,4 @@
+[riak]
+
+[riak:vars]
+ansible_ssh_user=ubuntu

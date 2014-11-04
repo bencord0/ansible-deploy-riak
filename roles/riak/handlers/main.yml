@@ -1,0 +1,6 @@
+---
+- name: riak start
+  command: riak start
+
+- name: riak restart
+  command: riak restart

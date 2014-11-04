@@ -1,0 +1,9 @@
+---
+- name: wait for nodes to settle
+  pause: seconds=30
+
+- name: plan cluster changes
+  riak: command=plan
+  notify:
+    - wait for ring
+    - commit cluster changes

@@ -1,0 +1,22 @@
+---
+- hosts: riak
+  roles:
+    - base
+    - riak
+
+# Riak Leader
+- hosts: riak[0]
+  roles:
+    - riak_leader
+
+# Riak Followers
+- hosts: riak:!riak[0]
+  vars:
+    primary_node: "{{ hostvars[groups['riak'][0]]['riak_outputs']['node_name'] }}"
+  roles:
+    - riak_followers
+
+# Last Riak Node
+- hosts: riak[-1]
+  roles:
+    - riak_final

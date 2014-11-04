@@ -1,0 +1,7 @@
+---
+# Many of these conventions are taken from github:basho/ansible-riak
+- name: collect riak facts
+  riak: command=ping
+  register: riak_outputs
+
+

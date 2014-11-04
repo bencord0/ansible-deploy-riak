@@ -1,0 +1,12 @@
+---
+- template: src=sources.list dest=/etc/apt/sources.list
+  notify: update apt cache
+
+- apt: name=apt-transport-https state=latest
+
+- apt_key: id=0xD59097AB url=https://packagecloud.io/gpg.key state=present
+
+- template: src=basho_riak.list dest=/etc/apt/sources.list.d/basho_riak.list
+  notify: update apt cache
+
+- meta: flush_handlers

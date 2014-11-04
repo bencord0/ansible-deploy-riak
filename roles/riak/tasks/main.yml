@@ -1,0 +1,12 @@
+---
+- apt: name=riak state=present
+
+- template: src=riak.conf dest=/etc/riak/riak.conf owner=riak group=riak mode=0644
+  notify: riak restart
+
+- command: riak getpid
+  register: riak_pid
+  ignore_errors: True
+
+- command: riak start
+  when: riak_pid|failed

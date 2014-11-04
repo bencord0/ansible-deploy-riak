@@ -1,0 +1,9 @@
+---
+- name: commit cluster changes
+  riak: command=commit
+
+- name: wait for handoffs
+  riak: wait_for_handoffs=1200
+
+- name: wait for ring
+  riak: wait_for_ring=600
